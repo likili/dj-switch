@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blocks',
+    'my_tags',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +127,11 @@ STATICFILES_DIRS = [
  os.path.join(BASE_DIR, "static"),
 #'/OSPanel/domains/django/hello1/name_dir/',
 ]
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'files', 'media')
+# MEDIA_URL = '/media/'
+
+IMAGE_UPLOAD_DIR = [
+    os.path.join(BASE_DIR, "images"),
+]
+
