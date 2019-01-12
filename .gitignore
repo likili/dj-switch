@@ -1,3 +1,5 @@
 venv/
 .idea/
+/switch/settings.py
+switch/settings.py
 manage.py
