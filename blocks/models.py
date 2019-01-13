@@ -69,11 +69,41 @@ class Snipet(models.Model):
 
 
 
+
+class Free_minds(models.Model):
+    title_mds = models.CharField(verbose_name=u'Заголовок:', max_length=255)
+    desc_text = models.CharField(verbose_name="Подзаголовок", max_length=355)
+    full_textt = models.TextField(verbose_name="Подробное описание")
+    image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
+    published = models.BooleanField(verbose_name="Опубликовано", default=0)
+
+    def __str__(self):
+        return self.title_mds
+
+
+
+# class Block_2(models.Model):
+#     title_block = models.CharField(verbose_name=u'Заголовок:', max_length=255)
+#     desc_text = models.CharField(verbose_name="Подзаголовок", max_length=355)
+#     # image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
+#     published = models.BooleanField(verbose_name="Опубликовано", default=0)
+#     blc_position = models.ForeignKey(Free_minds, on_delete=models.CASCADE, null=True, blank=True,verbose_name="Блоки:")
+#
+#     def __str__(self):
+#         return self.title_block
+#
+#     class Meta:
+#         verbose_name_plural = "Блок 2"
+
 class Title(models.Model):
     title = models.CharField(verbose_name=u'Оффер:', max_length=255)
     image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
     background = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Изображение")
     published = models.BooleanField(verbose_name="Опубликовано", default=0)
+    title_blck2 = models.CharField(verbose_name=u'Заголовок:', max_length=255)
+    desc_text_blck2 = models.CharField(verbose_name="Подзаголовок", max_length=355)
+    # image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
+    blck_position = models.ForeignKey(Free_minds, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Блоки:")
 
 
     def __str__(self):
@@ -83,28 +113,7 @@ class Title(models.Model):
         verbose_name_plural = "Офферы"
         verbose_name = "Оффер"
 
-class Free_minds(models.Model):
-    title = models.CharField(verbose_name=u'Заголовок:', max_length=255)
-    desc_text = models.CharField(verbose_name="Подзаголовок", max_length=355)
-    full_textt = models.TextField(verbose_name="Подробное описание")
-    image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
-    published = models.BooleanField(verbose_name="Опубликовано", default=0)
 
-    def __str__(self):
-        return self.title
-
-class Block_2(models.Model):
-    title = models.CharField(verbose_name=u'Заголовок:', max_length=255)
-    desc_text = models.CharField(verbose_name="Подзаголовок", max_length=355)
-    image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
-    published = models.BooleanField(verbose_name="Опубликовано", default=0)
-    blc_position = models.ForeignKey(Free_minds, on_delete=models.CASCADE, null=True, blank=True,verbose_name="Блоки:")
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name_plural = "Блок 2"
 
 class Photos_wrk(models.Model):
     name = models.CharField(verbose_name=u'Название работы:', max_length=255)
@@ -206,6 +215,9 @@ class Block_6(models.Model):
 
     class Meta:
         verbose_name_plural = "Блок 4"
+
+
+
 
 
 
