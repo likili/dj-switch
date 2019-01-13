@@ -71,10 +71,10 @@ class Snipet(models.Model):
 
 
 class Free_minds(models.Model):
-    title_mds = models.CharField(verbose_name=u'Заголовок:', max_length=255)
-    desc_text = models.CharField(verbose_name="Подзаголовок", max_length=355)
-    full_textt = models.TextField(verbose_name="Подробное описание")
-    image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
+    title_mds = models.CharField(verbose_name=u'Заголовок:', max_length=255, null=True)
+    desc_text = models.CharField(verbose_name="Подзаголовок", max_length=355, null=True)
+    full_textt = models.TextField(verbose_name="Подробное описание", null=True)
+    image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип", null=True)
     published = models.BooleanField(verbose_name="Опубликовано", default=0)
 
     def __str__(self):
@@ -100,8 +100,8 @@ class Title(models.Model):
     image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
     background = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Изображение")
     published = models.BooleanField(verbose_name="Опубликовано", default=0)
-    title_blck2 = models.CharField(verbose_name=u'Заголовок:', max_length=255)
-    desc_text_blck2 = models.CharField(verbose_name="Подзаголовок", max_length=355)
+    title_blck2 = models.CharField(verbose_name=u'Заголовок:', max_length=255, null=True)
+    desc_text_blck2 = models.CharField(verbose_name="Подзаголовок", max_length=355, null=True)
     # image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
     blck_position = models.ForeignKey(Free_minds, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Блоки:")
 

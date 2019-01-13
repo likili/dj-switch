@@ -14,5 +14,6 @@ class MenuItemAdmin(admin.ModelAdmin):
 
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(MenuItem, MenuItemAdmin)
+admin.site.register(Free_minds)
 admin.site.register(Title)
 admin.site.register(Snipet)
