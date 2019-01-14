@@ -8,10 +8,10 @@ from django.urls import reverse_lazy
 from blocks.models import Title, Block_3, Block_4, Block_5, Block_6
 # Create your views here.
 
-class TitleView(DetailView):
+class TitleView(ListView):
     model = Title
     template_name = 'blocks/header.html'
-    # context_object_name = 'students'
+    context_object_name = 'blocks'
 
 
 def index(request):

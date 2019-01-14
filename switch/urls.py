@@ -15,18 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
+from django.conf.urls import url
 from blocks.views import index
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
+from blocks import views
 
 urlpatterns = [
-
-    path('', index, name="index"),
-
-
+    # path('', index, name="index"),
+    # path('', include('blocks.urls', namespace='blocks')),
+    url(r'^$', views.TitleView.as_view(), name='index'),
     path('admin/', admin.site.urls),
 ]
+
 #
 # urlpatterns = [
 #     path('', index, name='index'),
