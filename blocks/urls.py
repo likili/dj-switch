@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 from blocks import views
 
-app_name = 'blocks'
+app_name = 'my_blocks'
 urlpatterns = [
     url(r'^$', views.TitleView.as_view(), name='list'),
     # url(r'^(?P<pk>\d+)/$', views.StudentDetailView.as_view(), name='detail'),

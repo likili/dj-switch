@@ -24,11 +24,16 @@ from blocks import views
 
 urlpatterns = [
     # path('', index, name="index"),
-    # path('', include('blocks.urls', namespace='blocks')),
+    # path('', include('blocks.urls', namespace='my_blocks')),
     url(r'^$', views.TitleView.as_view(), name='index'),
     path('admin/', admin.site.urls),
 ]
 
+
+# if settings.DEBUG:
+# urlpatterns += staticfiles_urlpatterns() + static(
+#     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+# )
 #
 # urlpatterns = [
 #     path('', index, name='index'),
@@ -43,5 +48,6 @@ urlpatterns = [
 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+urlpatterns += static(settings.MEDIA_URL,  document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

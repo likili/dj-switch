@@ -1,9 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
+{#{% load media %}#}
 {% load fishka_tags %}
 
+
 {#{% if blocks %}{{ blocks }}#}
-  {% for block in blocks %}
-    {% block offer %}{{ block }}{% endblock offer %}
+{#  {% static 'img/logo.png' %} #}
+{% block logo_img %}
+  {% for ttl_block in ttl_blocks %}
+      {{ ttl_block.image.url }}
   {% endfor %}
+{% endblock logo_img %}
+
+    {% block offer %}
+      {% for ttl_block in ttl_blocks %}
+      {{ ttl_block.title }}
+      {% endfor %}
+    {% endblock offer %}
+{#  #}
+
+
+
 {#{% endif %}#}

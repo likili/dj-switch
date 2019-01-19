@@ -13,7 +13,8 @@ from imagekit.processors import ResizeToFit, Adjust,ResizeToFill
 def get_file_path(self, filename):
     extension = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), extension)
-    return os.path.join("images", filename)
+    # return os.path.join("images", filename)
+    return "%s/%s" % (settings.MEDIA_ROOT, filename)
 
 # Create your models here.
 
@@ -68,8 +69,6 @@ class Snipet(models.Model):
         verbose_name = "Снипет"
 
 
-
-
 class Free_minds(models.Model):
     title_mds = models.CharField(verbose_name=u'Заголовок:', max_length=255, null=True, blank=True)
     slug = models.CharField(verbose_name=u'Url:', max_length=255, blank=True)
@@ -102,8 +101,8 @@ class Free_minds(models.Model):
 
 class Title(models.Model):
     title = models.CharField(verbose_name=u'Оффер:', max_length=255)
-    image = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Логотип")
-    background = models.ImageField(upload_to=get_file_path, blank=True, verbose_name="Изображение")
+    image = models.ImageField(upload_to=make_upload_path, blank=True, verbose_name="Логотип")
+    background = models.ImageField(upload_to=make_upload_path, blank=True, verbose_name="Изображение")
     published = models.BooleanField(verbose_name="Опубликовано", default=0)
     title_blck2 = models.CharField(verbose_name=u'Заголовок:', max_length=255, null=True)
     desc_text_blck2 = models.CharField(verbose_name="Подзаголовок", max_length=355, null=True)
@@ -111,12 +110,40 @@ class Title(models.Model):
     blck_position = models.ManyToManyField(Free_minds, verbose_name="Преимущества:")
 
 
+    def get_result(self):
+        return Results.objects.filter(category=self) # вернет нам список тайтлов где будут совпадать значения и заголовки фраз
+
+    def image_img(self):
+        if self.image:
+            return u'<img src="%s" width="70" />' % self.image.url
+        else:
+            return '(none)'
+
+    image.short_description = 'Thumb'
+    image.allow_tags = True
+
+
     def __str__(self):
         return self.title
+
+
 
     class Meta:
         verbose_name_plural = "Офферы"
         verbose_name = "Оффер"
+
+# подзаголовки на главной страницы
+class Results(models.Model):
+    category = models.ForeignKey(Title, blank=True, null=True, verbose_name="Категории")
+    str1 = models.CharField(verbose_name=u'Строка 1:', max_length=255, null=True, blank=True)
+    str1 = models.CharField(verbose_name=u'Строка 1:', max_length=255, null=True, blank=True)
+    str1 = models.CharField(verbose_name=u'Строка 1:', max_length=255, null=True, blank=True)
+# в шаблоне надо прописать так мы будем получать динамичные заголовки:
+# {% for i in object.get_result %}
+#     <p>{{i.str1}}<span class="yellwords">{{i.str2}}</span>{{i.str3}}</p>
+# {% endfor %}
+
+
 
 
 

@@ -20,7 +20,8 @@
     <div class="container-fluid" style="background-image: url('{% static "/img/background.png" %}')">
         <div class="row">
             <div class="col-lg-1 ml-auto mr-auto">
-                <img src="{% static 'img/logo.png' %}" class="logo">
+{#                <img src="{% static 'img/logo.png' %}" class="logo">#}
+              <img src="{% block logo_img %}{% endblock logo_img %}" class="logo">
             </div>
         </div>
         <div class="row">

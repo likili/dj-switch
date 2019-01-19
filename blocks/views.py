@@ -11,7 +11,7 @@ from blocks.models import Title, Block_3, Block_4, Block_5, Block_6
 class TitleView(ListView):
     model = Title
     template_name = 'blocks/header.html'
-    context_object_name = 'blocks'
+    context_object_name = 'ttl_blocks'
 
 
 def index(request):

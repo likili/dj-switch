@@ -135,3 +135,14 @@ IMAGE_UPLOAD_DIR = [
     os.path.join(BASE_DIR, "images"),
 ]
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = [
+ os.path.join(BASE_DIR, "media"),
+]
+
+# FILE_UPLOAD_HANDLERS = ""
+
+FILE_UPLOAD_HANDLERS = [
+    os.path.join(BASE_DIR, "media/images/")
+]
